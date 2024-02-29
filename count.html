@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown project</title><style>
+        body {
+            background-color: azure;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Ensure full height of the viewport */
+            margin: 0;
+        }
+        div {
+            text-align: center;
+        }
+        img {
+            width: 391px;
+            height: 260px;
+        }
+        .countdown-item {
+            display: inline-block;
+            padding: 10px;
+            color: white;
+        }
+        .countdown-unit {
+            display: block;
+        }
+        .custom-font {
+            font-size: small;
+        }
+        #days {
+            background-color: rgb(8, 0, 8);
+            font-size: 30px;
+            border-radius: 15px;
+            padding: 15px;
+        }
+
+        #hours {
+            background-color: rgb(16, 0, 16);
+            font-size: 30px;
+            border-radius: 15px;
+            padding: 15px;
+        }
+
+        #minutes {
+            background-color: rgb(24, 0, 24);
+            font-size: 30px;
+            border-radius: 15px;
+            padding: 15px;
+        }
+
+        #seconds {
+            background-color: rgb(32, 0, 32);
+            font-size: 30px;
+            border-radius: 15px;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body style="background-color: azure;">
+    <div>
+        <img src="iphone.jpg" style="width:391px;height:260px;">
+        <h1>OLD IPHONE GIVEAWAY</h1>
+        <h2>Giveaway Ends On Thursday, 7 March 2024 At 11:30am</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Id aliquet risus feugiat in. Amet purus gravida quis blandit. Nec ultrices dui sapien eget. 
+            Et odio pellentesque diam volutpat commodo sed egestas. Neque gravida in fermentum et sollicitudin ac orci. 
+            Mauris pellentesque pulvinar pellentesque habitant morbi tristique senectus et netus</p>
+    </div>
+    <div id="countdown-container">
+        <div class="countdown-item" id="days">
+            <span class="countdown-unit" id="days-unit"></span>
+        </div>
+        <div class="countdown-item" id="hours">
+            <span class="countdown-unit" id="hours-unit"></span>
+        </div>
+        <div class="countdown-item" id="minutes">
+            <span class="countdown-unit" id="minutes-unit"></span>
+        </div>
+        <div class="countdown-item" id="seconds">
+            <span class="countdown-unit" id="seconds-unit"></span>
+        </div>
+    </div>
+    <script>
+        var countdownDate = new Date("7 March, 2024 11:30:00").getTime();
+        var x = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = countdownDate - now;
+            
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days-unit").innerHTML = days + "<span class='countdown-unit custom-font'>DAYS</span>";
+            document.getElementById("hours-unit").innerHTML = hours + "<span class='countdown-unit custom-font'>HOURS</span>";
+            document.getElementById("minutes-unit").innerHTML = minutes + "<span class='countdown-unit custom-font'>MONTH</span>";
+            document.getElementById("seconds-unit").innerHTML = seconds + "<span class='countdown-unit custom-font'>SECS</span>";
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "Expired";
+            } 
+        }, 1000);
+    </script>
+</body>
+</html>
